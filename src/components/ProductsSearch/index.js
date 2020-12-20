@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import { AppBar, InputBase, Toolbar, Typography } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
-import { searchProducts, findProductById } from '../../clients/productsClient';
+import axios from 'axios';
 
 import Products from '../Products';
 
@@ -14,15 +11,33 @@ const ProductsSearch = () => {
   const MIN_FILTER_LENGTH = 3;
   const [filterText, setfilterText] = useState('');
   const [productsResults, setProductsResults] = useState([]);
+  const URL = 'http://localhost:8080/products/';
+
+  const fetchById = async () => {
+    try {
+      const { data } = await axios.get(`${URL}${filterText}`);
+      setProductsResults([data]);
+    } catch (error) {
+      setProductsResults([]);
+    }
+  };
+
+  const fetchByBrandOrDescription = async () => {
+    try {
+      const { data } = await axios.get(`${URL}search?filter=${filterText}`);
+      setProductsResults(data);
+    } catch (error) {
+      setProductsResults([]);
+    }
+  };
 
   useEffect(() => {
-    if (Number.isNaN(filterText)) {
+    if (isNaN(+filterText)) {
       if (MIN_FILTER_LENGTH <= filterText.length) {
-        setProductsResults(searchProducts(filterText));
+        fetchByBrandOrDescription();
       }
-    } else {
-      const resulta = findProductById(filterText);
-      setProductsResults(resulta);
+    } else if (filterText) {
+      fetchById();
     }
   }, [filterText]);
 
@@ -40,8 +55,7 @@ const ProductsSearch = () => {
             <InputBase
               id="filterText"
               label="filterText"
-              placeholder="Search…"
-              style={{ width: '100%' }}
+              placeholder="Search..."
               onChange={({ target }) => setfilterText(target.value)}
               value={filterText}
               data-testid="input-search"
