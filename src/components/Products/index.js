@@ -20,20 +20,21 @@ const Products = ({ productsList }) => (
             />
             <CardContent>
               <Typography component="h5" variant="h5" className="card-brand" display="inline" color="textPrimary">
-                {product.brand}
+                {`${product.brand} `}
               </Typography>
               <Typography component="h5" variant="h5" display="inline">
                 {product.description}
               </Typography>
+              <br />
               <Typography component="h5" variant="h5" display="inline">
-                {getFormattedPrice(product.finalPrice)}
+                {`${getFormattedPrice(product.finalPrice)} `}
               </Typography>
               {product?.discount && (
                 <>
                   <Typography component="h5" variant="h5" color="secondary" display="inline">
                     {`${product.discount.percentage}%`}
                   </Typography>
-                  <Typography component="h5" variant="subtitle1" className="card-original-price">
+                  <Typography component="h5" variant="h6" className="card-original-price">
                     {getFormattedPrice(product.price)}
                   </Typography>
                 </>

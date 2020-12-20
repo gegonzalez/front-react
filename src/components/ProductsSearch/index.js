@@ -63,7 +63,7 @@ const ProductsSearch = () => {
           </div>
         </Toolbar>
       </AppBar>
-      <Products productsList={productsResults} />
+      {filterText && <Products productsList={productsResults} />}
     </>
   );
 };
