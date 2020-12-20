@@ -23,3 +23,5 @@ Then Open the link <http://127.0.0.1:3000/>
 
 - **yarn test**: Run tests
 - **yarn test:lint**: Run linter and look up for code conventions.
+- **yarn test:journey**: Run journey tests. (Requires of every service running)
+- **yarn test:journey-open**: Run journey tests and opens cypress console

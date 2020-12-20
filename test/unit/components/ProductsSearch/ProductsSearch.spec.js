@@ -1,4 +1,5 @@
 import React from 'react';
+import '@babel/polyfill';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 
@@ -19,5 +20,6 @@ describe('ProductsSearch Component', () => {
     expect(input.value).toBe('');
     fireEvent.change(input, { target: { value: '123456' } });
     expect(input.value).toBe('123456');
+    expect(screen.getByText('There are no results')).toBeInTheDocument();
   });
 });
