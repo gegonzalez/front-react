@@ -3,11 +3,17 @@ import axiosInstance from './axiosInstance';
 export const searchProducts = filterText => {
   axiosInstance
     .get(`search?filter=${filterText}`)
-    .then(result => {
-      return result.data;
-    })
+    .then(result => result.data)
     .catch(error => {
       console.log(`😱 Axios request failed: ${error}`);
-      return;
+    });
+};
+
+export const findProductById = id => {
+  axiosInstance
+    .get(id)
+    .then(result => [result.data])
+    .catch(error => {
+      console.log(`😱 Axios request failed: ${error}`);
     });
 };
