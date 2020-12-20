@@ -3,16 +3,12 @@ describe('Produc Search Journey', () => {
 
   beforeEach(() => {
     cy.server();
-
-    cy.route({
-      method: 'GET',
-      url: FRONTEND_URL,
-      response: '',
-    }).as('main');
   });
 
   it('should visit home page', () => {
     cy.visit(FRONTEND_URL);
+
+    cy.get('#filterText').should('have.value', '');
   });
 
   it('should search product', () => {

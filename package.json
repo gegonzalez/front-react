@@ -20,9 +20,10 @@
     "eject": "react-scripts eject",
     "test:lint": "eslint .",
     "test:unit": "npm run jest test/unit",
-    "test:journey": "cypress run",
+    "test:journey": "start-server-and-test start http://localhost:3000 cy:run",
     "test:journey-open": "cypress open",
-    "jest": "jest"
+    "jest": "jest",
+    "cy:run": "cypress run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,7 +53,8 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "start-server-and-test": "^1.11.6"
   },
   "jest": {
     "setupFilesAfterEnv": [
