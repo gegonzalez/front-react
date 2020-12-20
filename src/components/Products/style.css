@@ -1,0 +1,27 @@
+h2 {
+  padding-inline: 5px;
+}
+
+.results-page {
+  padding: 3rem 1rem;
+}
+
+.card {
+  width: 345px;
+}
+
+.card-container {
+  display: grid;
+  justify-items: start;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 1rem;
+}
+
+.card-brand {
+  font-weight: bold;
+}
+
+.card-original-price {
+  text-decoration: line-through;
+}
