@@ -14,8 +14,7 @@
 
 Or
 
-- **make build**: Build docker image
-- **make run**: Run docker image
+- **make build run**: Build and run docker image
 
 Then Open the link <http://127.0.0.1:3000/>
 
